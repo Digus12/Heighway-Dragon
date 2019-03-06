@@ -11,7 +11,7 @@ public class Dragon extends Frame implements ActionListener
 		setTitle("Dragon");
 		Panel parameterPanel = new Panel(); 
 		parameterPanel.setLayout(new GridLayout(2,1));
-	       	Panel NstepsPanel = new Panel();
+	       	Panel nStepsPanel = new Panel();
 		nStepsPanel.add(new Label("no of steps = "));
 		nStepsPanel.add(nStepsField);
 		Panel buttonPanel = new Panel();
@@ -23,7 +23,7 @@ public class Dragon extends Frame implements ActionListener
 public static void main(String[] args) {new Dragon();}
 public void actionPerformed(ActionEvent action) 
 {
-	if(action.getSource()==drawbutton) 
+	if(action.getSource()==drawButton) 
 	dragonAttractor.setSteps(Integer.parseInt(nStepsField.getText()));
 	System.out.println(Integer.parseInt(nStepsField.getText()));
 }
@@ -40,7 +40,7 @@ class DragonAttractor extends Canvas
 	{
 		if(n==1)
 		{
-			graphics g = getGraphics();
+			Graphics g = getGraphics();
 			g.drawLine(x1+scaling,y1+scaling,x2+scaling,y2+scaling);
 			g.drawLine(x2+scaling,y2+scaling,x3+scaling,y3+scaling);
 		}
@@ -48,7 +48,7 @@ class DragonAttractor extends Canvas
 		{
 			int x4=(x1+x3)/2;int y4 =(y1+y3)/2;
 			int x5 =x3+x2-x4; int y5= y3+y2-y4;			
-			dragonr(x2,y2,x4,y4,x1,y1,n-1); dragon(x2,y2,x5,y5,x3,y3,n-1);
+			dragonr(x2,y2,x4,y4,x1,y1,n-1); dragonr(x2,y2,x5,y5,x3,y3,n-1);
 		}
 	}
 	public void paint(Graphics g)
@@ -61,5 +61,5 @@ class DragonAttractor extends Canvas
 		int x3 = yorig-scaling; int y3= yorig;
 		dragonr(x1,y1,x2,y2,x3,y3,n);
 	}
-	public void setSteps(int nSteps) {n= Steps; repaint();}
+	public void setSteps(int nSteps) {n= nSteps; repaint();}
 }
